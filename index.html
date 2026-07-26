@@ -346,10 +346,10 @@
 <body>
 
 <!-- อีโมจิตกแต่งพื้นหลังขนาดใหญ่ขึ้น -->
-<div class="bg-gimmick" style="top: 12%; left: 6%;">📊</div>
+<div class="bg-gimmick" style="top: 12%; left: 6%;">🌻</div>
 <div class="bg-gimmick" style="top: 22%; right: 7%; animation-delay: 2s;">📈</div>
 <div class="bg-gimmick" style="bottom: 18%; left: 8%; animation-delay: 4s;">📉</div>
-<div class="bg-gimmick" style="bottom: 10%; right: 6%; animation-delay: 6s;">🌾</div>
+<div class="bg-gimmick" style="bottom: 10%; right: 6%; animation-delay: 6s;">☀︎</div>
 
 <div class="container">
     <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">EN</button>
@@ -358,7 +358,7 @@
     <h2 id="title">ค้นหา Contact น้องรหัส</h2>
     <div class="subtitle">
         <span id="subtitleText">กรอกรหัสนักศึกษา 9 หลัก เพื่อค้นหาข้อมูล Contact</span><br>
-        <span class="note-highlight" id="noteHighlight"> ขอให้น้องๆม่วนกับการตามหาพี่รหัสของตัวเองเด้อ</span>
+        <span class="note-highlight" id="noteHighlight"> รักมันออกแบบไม่ได้ </span>
     </div>
     
     <div class="input-group">
@@ -400,6 +400,7 @@
     const rotatingNotes = {
         th: [
             " ขออภัยในความไม่สะดวก",
+            " รักมันออกแบบไม่ได้",
             " ที่ทำไปเพราะรักเธอ",
             " อย่าลืมมางานกันด้วยน้าา ",
             " เดินกันมาตั้งไกลแต่ทำได้แค่เดินมาส่ง",
@@ -410,7 +411,8 @@
         en: [
             " Don't forget to say Hi when you find your junior! ",
             " Good luck ECON 68, hope you connect soon! ",
-            " Stay connected and keep in touch! "
+            " Stay connected and keep in touch! ",
+            " Spain champion in the world🇪🇸"
         ]
     };
 
@@ -424,8 +426,8 @@
             emptyError: "กรุณากรอกรหัสนักศึกษาของคุณก่อน",
             notFoundError: "ไม่พบข้อมูล กรุณาตรวจสอบรหัสนักศึกษาใหม่อีกครั้ง",
             foundSuccess: "พบข้อมูลช่องทางการติดต่อเรียบร้อยแล้ว",
-            contactSingle: "Contact น้องรหัส:",
-            contactMultiplePrefix: "Contact น้องรหัสคนที่ ",
+            contactSingle: "ช่องทางติดต่อน้องรหัส:",
+            contactMultiplePrefix: "ช่องทางติดต่อน้องรหัสคนที่ ",
             coMentorHeader: " ช่องทางติดต่อพี่ร่วม:",
             contactText: "หากมีปัญหาติดต่อได้จากตรงนี้เลย",
             modalTitle: " หมายเหตุสำคัญ",
@@ -451,7 +453,7 @@
         }
     };
 
-    /* ข้อมูล Contact ที่โหลดมาจากไฟล์ Book5.xlsx */
+    /* ข้อมูล Contact  Book5.xlsx */
     const hintData = {
         "681610003": { contacts: ["onghyuu"], coMentors: [] },
         "681610006": { contacts: ["kakemonfy"], coMentors: [] },
