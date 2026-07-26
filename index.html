@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Econ 68 | Junior Mentor Contact</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: radial-gradient(circle at 10% 20%, #fff7fa 0%, #fbcde2 45%, #e1f4e7 90%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* ปรับให้อีโมจิด้านหลังใหญ่ขึ้น */
+        .bg-gimmick {
+            position: absolute;
+            font-size: 52px; 
+            opacity: 0.15;
+            animation: floatGimmick 8s ease-in-out infinite;
+            user-select: none;
+            z-index: 1;
+        }
+        @keyframes floatGimmick {
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+            50% { transform: translateY(-20px) scale(1.08) rotate(7deg); }
+        }
+
+        /* ปรับกรอบหลักให้กว้างและใหญ่ขึ้น */
+        .container {
+            background-color: rgba(255, 255, 255, 0.94);
+            padding: 55px 40px 48px 40px;
+            border-radius: 36px;
+            box-shadow: 0 20px 50px rgba(224, 71, 122, 0.12), 0 5px 20px rgba(40, 167, 69, 0.06);
+            text-align: center;
+            max-width: 580px; 
+            width: 100%;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(16px);
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background-color: #ffffff;
+            border: 2px solid #fbc4db;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #bd1550;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 8px rgba(224, 71, 122, 0.08);
+            z-index: 20;
+        }
+        .lang-switch:hover {
+            background-color: #bd1550;
+            color: #ffffff;
+            border-color: #bd1550;
+            transform: scale(1.05);
+        }
+        
+        .badge-69 {
+            background: linear-gradient(45deg, #ff4081, #f715ff);
+            color: rgb(236, 241, 237);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 18px;
+            box-shadow: 0 5px 12px rgba(255, 64, 129, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            color: #bd1550;
+            margin: 5px 0;
+            font-size: 28px;
+            font-weight: 800;
+        }
+        .subtitle {
+            color: #555;
+            font-size: 14.5px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .note-highlight {
+            color: #ec0f0f;
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 8px;
+            display: inline-block;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+        .note-highlight.fade-out {
+            opacity: 0;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 16px;
+            border: 2.5px solid #fbc4db;
+            border-radius: 22px;
+            font-size: 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+            background-color: #fffbfd;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            color: #444;
+        }
+        input[type="text"]:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 15px rgba(40, 167, 69, 0.15);
+            outline: none;
+            background-color: #ffffff;
+        }
+        
+        button.btn-submit {
+            background: linear-gradient(135deg, #ff65a3 0%, #ff4081 100%);
+            color: white;
+            border: none;
+            padding: 16px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 22px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 6px 16px rgba(255, 64, 129, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button.btn-submit:hover {
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(40, 167, 69, 0.35);
+        }
+        button.btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 24px;
+            border-radius: 22px;
+            display: none;
+            font-weight: bold;
+            line-height: 1.6;
+            animation: fadeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            text-align: left;
+        }
+        .success {
+            background-color: #edfcf0;
+            color: #1b5e20;
+            border: 2.5px solid #a5d6a7;
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.05);
+        }
+        .error {
+            background-color: #fff5f6;
+            color: #c62828;
+            border: 2.5px solid #ffcdd2;
+            box-shadow: 0 8px 20px rgba(198, 40, 40, 0.05);
+            text-align: center;
+        }
+        
+        .hint-section-title {
+            font-size: 15px;
+            color: #0d5314;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 700;
+            border-bottom: 2px solid #c8e6c9;
+            padding-bottom: 4px;
+        }
+        .hint-label {
+            font-size: 14px;
+            color: #444;
+            margin-top: 6px;
+            display: block;
+            font-weight: 600;
+        }
+        .hint-text {
+            font-size: 20px;
+            color: #1b5e20;
+            font-weight: bold;
+            display: block;
+            word-break: break-word;
+            margin-bottom: 6px;
+        }
+        .co-mentor-text {
+            color: #b71c1c;
+        }
+        .hint-divider {
+            margin: 14px 0;
+            border: 0;
+            border-top: 1px dashed #a5d6a7;
+        }
+
+        /* Modal / Popup */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 28px;
+            max-width: 440px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transform: scale(0.85);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px solid #fbc4db;
+        }
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+        .modal-title {
+            color: #bd1550;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .modal-text {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+        .btn-accept {
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 18px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+            transition: all 0.2s ease;
+        }
+        .btn-accept:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(40, 167, 69, 0.4);
+        }
+
+        .footer-contact-wrapper {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+        }
+        .contact-text-bubble {
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1.5px solid #fbc4db;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #bd1550;
+            box-shadow: 0 4px 12px rgba(224, 71, 122, 0.08);
+            backdrop-filter: blur(8px);
+            white-space: nowrap;
+        }
+        .ig-contact-btn {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 6px 16px rgba(220, 39, 67, 0.3);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2.5px solid #ffffff;
+            flex-shrink: 0;
+        }
+        .ig-contact-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: #ffffff;
+        }
+        .footer-contact-wrapper:hover .ig-contact-btn {
+            transform: scale(1.15) translateY(-3px);
+            box-shadow: 0 10px 22px rgba(220, 39, 67, 0.45);
+        }
+        .footer-contact-wrapper:hover .contact-text-bubble {
+            transform: translateY(-2px);
+            background-color: #ffffff;
+        }
+
+        @media (max-width: 480px) {
+            .contact-text-bubble { display: none; }
+            .container { padding: 40px 22px 35px 22px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.93) translateY(12px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- อีโมจิตกแต่งพื้นหลังขนาดใหญ่ขึ้น -->
+<div class="bg-gimmick" style="top: 12%; left: 6%;">📊</div>
+<div class="bg-gimmick" style="top: 22%; right: 7%; animation-delay: 2s;">📈</div>
+<div class="bg-gimmick" style="bottom: 18%; left: 8%; animation-delay: 4s;">📉</div>
+<div class="bg-gimmick" style="bottom: 10%; right: 6%; animation-delay: 6s;">🌾</div>
+
+<div class="container">
+    <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">EN</button>
+
+    <div class="badge-69">ECON 68 • MENTOR CONTACT</div>
+    <h2 id="title">ค้นหา Contact น้องรหัส</h2>
+    <div class="subtitle">
+        <span id="subtitleText">กรอกรหัสนักศึกษา 9 หลัก เพื่อค้นหาข้อมูล Contact</span><br>
+        <span class="note-highlight" id="noteHighlight"> ขอให้น้องๆม่วนกับการตามหาพี่รหัสของตัวเองเด้อ</span>
+    </div>
+    
+    <div class="input-group">
+        <input type="text" id="studentId" placeholder="กรอกรหัสนักศึกษา 9 หลัก" maxlength="9" inputmode="numeric">
+    </div>
+    <button class="btn-submit" onclick="checkInputBeforeModal()">
+        <span id="btnText">ค้นหา Contact</span>
+    </button>
+    
+    <div id="result" class="result-box"></div>
+</div>
+
+<div class="modal-overlay" id="noteModal">
+    <div class="modal-box">
+        <div class="modal-title" id="modalTitle"> หมายเหตุสำคัญ</div>
+        <div class="modal-text" id="modalText">
+            เนื่องด้วยจำนวนของน้องมีน้อยกว่าจำนวนของพี่ จึงทำให้นักศึกษาบางส่วนมีพี่รหัสมากกว่าหนึ่งคนและเลขสายรหัสอาจไม่ตรงกันในบางกรณี ทั้งนี้ ได้มีการรวมรายชื่อนักศึกษาหลักสูตรปกติและหลักสูตรนานาชาติเข้าด้วยกันเพื่อให้การจัดสายรหัสเป็นไปอย่างครบถ้วนและครอบคลุมที่สุด จึงขออภัยในความไม่สะดวกมา ณ ที่นี้
+        </div>
+        <button class="btn-accept" onclick="acceptNote()" id="modalBtn">รับทราบและดูข้อมูล</button>
+    </div>
+</div>
+
+<div class="footer-contact-wrapper">
+    <div class="contact-text-bubble" id="contactText">หากมีปัญหาติดต่อได้จากตรงนี้เลย</div>
+    <a href="https://www.instagram.com/econcommittee.cmu?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+       target="_blank" 
+       class="ig-contact-btn" 
+       title="ติดต่อกรรมการรุ่น ECON CMU">
+       <svg viewBox="0 0 24 24">
+           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059 1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+       </svg>
+    </a>
+</div>
+
+<script>
+    let currentLang = 'th';
+    let currentNoteIndex = 0;
+
+    const rotatingNotes = {
+        th: [
+            " ขออภัยในความไม่สะดวก",
+            " อย่าลืมมางานกันด้วยน้าา ",
+            " เดินกันมาตั้งไกลแต่ทำได้แค่เดินมาส่ง",
+            " อยากเป็นคนที่ฮีลใจแต่เป็นได้แค่ฮีลมังกาซอร์",
+            " วิ่งไล่ตามจนเป็นหอบ..สุดท้ายเป็นตัวประกอบในชีวิตเธอ",
+            " หมอถามว่าแพ้อะไร..เลยตอบไปว่าแพ้เธองับเตง"
+        ],
+        en: [
+            " Don't forget to say Hi when you find your junior! ",
+            " Good luck ECON 68, hope you connect soon! ",
+            " Stay connected and keep in touch! "
+        ]
+    };
+
+    const translations = {
+        th: {
+            title: "ค้นหา Contact น้องรหัส",
+            subtitleText: "กรอกรหัสนักศึกษา 9 หลัก เพื่อค้นหาข้อมูล Contact",
+            placeholder: "กรอกรหัสนักศึกษา 9 หลัก",
+            btnText: "ค้นหา Contact",
+            langBtn: "EN",
+            emptyError: "กรุณากรอกรหัสนักศึกษาของคุณก่อน",
+            notFoundError: "ไม่พบข้อมูล กรุณาตรวจสอบรหัสนักศึกษาใหม่อีกครั้ง",
+            foundSuccess: "พบข้อมูลช่องทางการติดต่อเรียบร้อยแล้ว",
+            contactSingle: "Contact น้องรหัส:",
+            contactMultiplePrefix: "Contact น้องรหัสคนที่ ",
+            coMentorHeader: "🤝 ช่องทางติดต่อพี่ร่วม:",
+            contactText: "หากมีปัญหาติดต่อได้จากตรงนี้เลย",
+            modalTitle: " หมายเหตุสำคัญ",
+            modalText: "เนื่องด้วยจำนวนของน้องมีน้อยกว่าจำนวนของพี่ จึงทำให้นักศึกษาบางส่วนมีพี่รหัสมากกว่าหนึ่งคนและเลขสายรหัสอาจไม่ตรงกันในบางกรณี ทั้งนี้ ได้มีการรวมรายชื่อนักศึกษาหลักสูตรปกติและหลักสูตรนานาชาติเข้าด้วยกันเพื่อให้การจัดสายรหัสเป็นไปอย่างครบถ้วนและครอบคลุมที่สุด จึงขออภัยในความไม่สะดวกมา ณ ที่นี้",
+            modalBtn: "รับทราบและดูข้อมูล"
+        },
+        en: {
+            title: "Search Junior Contact",
+            subtitleText: "Enter your 9-digit student ID to view junior contacts.",
+            placeholder: "Enter 9-digit student ID",
+            btnText: "Search Contact",
+            langBtn: "TH",
+            emptyError: "Please enter your student ID first.",
+            notFoundError: "Student ID not found. Please try again.",
+            foundSuccess: "Contact information found!",
+            contactSingle: "Junior Contact:",
+            contactMultiplePrefix: "Junior Contact #",
+            coMentorHeader: "🤝 Co-Mentor Contact:",
+            contactText: "If any issues, contact us at",
+            modalTitle: " Important Note",
+            modalText: "Due to the number of freshmen being less than senior mentors, some students may have more than one mentor/junior. We apologize for any inconvenience caused.",
+            modalBtn: "I Understand & View Contact"
+        }
+    };
+
+    /* ข้อมูล Contact ที่โหลดมาจากไฟล์ Book5.xlsx */
+    const hintData = {
+        "681610003": { contacts: ["onghyuu"], coMentors: [] },
+        "681610006": { contacts: ["kakemonfy"], coMentors: [] },
+        "681610014": { contacts: ["kkpkm.11"], coMentors: [] },
+        "681610022": { contacts: ["ppitc.h"], coMentors: [] },
+        "681610026": { contacts: ["kkanyay"], coMentors: [] },
+        "681610031": { contacts: ["kksixk_"], coMentors: [] },
+        "681610033": { contacts: ["biieninaan"], coMentors: [] },
+        "681610046": { contacts: ["ospiy.wee_"], coMentors: [] },
+        "681610049": { contacts: ["sxuci_"], coMentors: [] },
+        "681610052": { contacts: ["_kanxorn"], coMentors: [] },
+        "681610053": { contacts: ["n9_ynsnaax"], coMentors: [] },
+        "681610057": { contacts: ["_thitiwa.t"], coMentors: [] },
+        "681610058": { contacts: ["Jayln.05"], coMentors: [] },
+        "681610068": { contacts: ["natta_view"], coMentors: [] },
+        "681610074": { contacts: ["nn1chaa__"], coMentors: [] },
+        "681610075": { contacts: ["_ntpkm08"], coMentors: [] },
+        "681610078": { contacts: ["_tkhcpx_"], coMentors: [] },
+        "681610081": { contacts: ["sakura.bny"], coMentors: [] },
+        "681610085": { contacts: ["tn_txwxn"], coMentors: [] },
+        "681610086": { contacts: ["poch.te"], coMentors: [] },
+        "681610090": { contacts: ["_yxwvutsrqponmlkjihgfe_cba"], coMentors: [] },
+        "681610092": { contacts: ["mineemojii"], coMentors: [] },
+        "681610095": { contacts: ["bam_bi_bb"], coMentors: [] },
+        "681610102": { contacts: ["btxm_yy"], coMentors: [] },
+        "681610104": { contacts: ["sing.to_jr"], coMentors: [] },
+        "681610110": { contacts: ["nxnmxxz"], coMentors: [] },
+        "681610111": { contacts: ["nnopnat_k14"], coMentors: [] },
+        "681610114": { contacts: ["praepare_wa"], coMentors: [] },
+        "681610115": { contacts: ["ciel0.nochor_"], coMentors: [] },
+        "681610119": { contacts: ["_nirudcha"], coMentors: [] },
+        "681610123": { contacts: ["yoknnyp_"], coMentors: [] },
+        "681610124": { contacts: ["b3nchxya_"], coMentors: [] },
+        "681610125": { contacts: ["l.isxxline_xlvi"], coMentors: [] },
+        "681610128": { contacts: ["Bossjoshyai"], coMentors: [] },
+        "681610131": { contacts: ["memert22_49"], coMentors: [] },
+        "681610138": { contacts: ["may.pyp_me"], coMentors: [] },
+        "681610148": { contacts: ["futaro_lll"], coMentors: [] },
+        "681610149": { contacts: ["b_phongphira"], coMentors: [] },
+        "681610151": { contacts: ["Pachispr"], coMentors: [] },
+        "681610154": { contacts: ["__marshmalloww._"], coMentors: [] },
+        "681610155": { contacts: ["iak.pplt"], coMentors: [] },
+        "681610156": { contacts: ["eaaearn.pnd"], coMentors: [] },
+        "681610164": { contacts: ["lumlimary , sutdoidu"], coMentors: [] },
+        "681610172": { contacts: ["cccccooooopppppttttteeeeerrrrr"], coMentors: [] },
+        "681610174": { contacts: ["pp._.please"], coMentors: [] },
+        "681610176": { contacts: ["pchiiies"], coMentors: [] },
+        "681610180": { contacts: ["a10_justlook ,"], coMentors: [] },
+        "681610182": { contacts: ["non_kailnw , Tel 548 : 0987427549"], coMentors: [] },
+        "681610185": { contacts: ["sumo_gocoa"], coMentors: [] },
+        "681610190": { contacts: ["d.pxuble_wa"], coMentors: [] },
+        "681610192": { contacts: ["thisme_first"], coMentors: [] },
+        "681610194": { contacts: ["j_juuupiter"], coMentors: [] },
+        "681610195": { contacts: ["nx_mnx"], coMentors: [] },
+        "681610196": { contacts: ["plxm.lq"], coMentors: [] },
+        "681610198": { contacts: ["nnamxn_"], coMentors: [] },
+        "681610203": { contacts: ["ttangkwxq_"], coMentors: [] },
+        "681610206": { contacts: ["ch.pun_"], coMentors: [] },
+        "681610208": { contacts: ["yqr1ndx.h0n3y"], coMentors: [] },
+        "681610209": { contacts: ["b.ttttp"], coMentors: [] },
+        "681610211": { contacts: ["Pinpoei"], coMentors: [] },
+        "681610213": { contacts: ["norwollie"], coMentors: [] },
+        "681610214": { contacts: ["Artniris_"], coMentors: [] },
+        "681610215": { contacts: ["kkittory_yy"], coMentors: [] },
+        "681610221": { contacts: ["mushi.spwt"], coMentors: [] },
+        "681610227": { contacts: ["s0wqft"], coMentors: [] },
+        "681610230": { contacts: ["klldnnn"], coMentors: [] },
+        "681610235": { contacts: ["Mookkk_ssss"], coMentors: [] },
+        "681610236": { contacts: ["______20cm"], coMentors: [] },
+        "681610239": { contacts: ["iiiindieee"], coMentors: [] },
+        "681610257": { contacts: ["intermaichopkinpak"], coMentors: [] },
+        "681610258": { contacts: ["g.gxitxr"], coMentors: [] },
+        "681610260": { contacts: ["dueannw"], coMentors: [] },
+        "681610263": { contacts: ["Songsid_"], coMentors: [] },
+        "681610264": { contacts: ["tr_gun_xviii"], coMentors: [] },
+        "681610269": { contacts: ["nrskrx"], coMentors: [] },
+        "681610280": { contacts: ["nunu_nanaaa"], coMentors: [] },
+        "681610284": { contacts: ["Padi_phat"], coMentors: [] },
+        "681610285": { contacts: ["xsi_to"], coMentors: [] },
+        "681610286": { contacts: ["juliperps"], coMentors: [] },
+        "681610287": { contacts: ["toxywasii_"], coMentors: [] },
+        "681610289": { contacts: ["pupitchaa"], coMentors: [] },
+        "681610292": { contacts: ["fangxinlee"], coMentors: [] },
+        "681610142": { contacts: ["parn_0808"], coMentors: [] },
+        "681610299": { contacts: ["punnasirin"], coMentors: [] },
+        "681610308": { contacts: ["pxyn06"], coMentors: [] },
+        "681610311": { contacts: ["nnpynttt"], coMentors: [] },
+        "681610325": { contacts: ["volkminyexuk"], coMentors: [] },
+        "681610326": { contacts: ["j.pxch_3"], coMentors: [] },
+        "681610327": { contacts: ["masterpxachmaldini"], coMentors: [] },
+        "681610328": { contacts: ["l__eternal78"], coMentors: [] },
+        "681610333": { contacts: ["mrnppcst"], coMentors: [] },
+        "681610334": { contacts: ["non_kailnw"], coMentors: [] },
+        "681610336": { contacts: ["xzeress"], coMentors: [] },
+        "681610337": { contacts: ["ongkany"], coMentors: [] },
+        "681610341": { contacts: ["dat._.no"], coMentors: [] },
+        "681610345": { contacts: ["pingp0ng.__"], coMentors: [] },
+        "681610359": { contacts: ["me_____cancel__waver"], coMentors: [] },
+        "681610362": { contacts: ["Gon_.22k"], coMentors: [] },
+        "681610374": { contacts: ["levis_saharat"], coMentors: [] },
+        "681610380": { contacts: ["_.lookpxd._"], coMentors: [] },
+        "681610386": { contacts: ["pepe_juu08"], coMentors: [] },
+        "681610388": { contacts: ["ashimnk"], coMentors: [] },
+        "681610389": { contacts: ["bai_pai__"], coMentors: [] },
+        "681610393": { contacts: ["dreammiine"], coMentors: [] },
+        "681610396": { contacts: ["gxmm_1.7"], coMentors: [] },
+        "681610397": { contacts: ["iuvzduvX2"], coMentors: [] },
+        "681610402": { contacts: ["paachrie"], coMentors: [] },
+        "681610405": { contacts: ["fxernb"], coMentors: [] },
+        "681610410": { contacts: ["ausan_rt"], coMentors: [] },
+        "681610412": { contacts: ["isyourm0n_"], coMentors: [] },
+        "681610417": { contacts: ["daithannn"], coMentors: [] },
+        "681610429": { contacts: ["coolhandsome_sam"], coMentors: [] },
+        "681610432": { contacts: ["lamaareeyah"], coMentors: [] },
+        "681610446": { contacts: ["athiratttt"], coMentors: [] },
+        "681610450": { contacts: ["swns.n"], coMentors: [] },
+        "681610454": { contacts: ["16torfun"], coMentors: [] },
+        "681610460": { contacts: ["sxttawattttt"], coMentors: [] },
+        "681610464": { contacts: ["honey_bebeez"], coMentors: [] },
+        "681610467": { contacts: ["fx_stpm"], coMentors: [] },
+        "681610470": { contacts: ["suipkit.mali"], coMentors: [] },
+        "681610471": { contacts: ["22hrwithang"], coMentors: [] },
+        "681610472": { contacts: ["dear.00.rin_"], coMentors: [] },
+        "681610476": { contacts: ["veeradet.tttt"], coMentors: [] },
+        "681610477": { contacts: ["4cusforyou"], coMentors: [] },
+        "681610482": { contacts: ["warisopaspong"], coMentors: [] },
+        "681610487": { contacts: ["erduttucah"], coMentors: [] },
+        "681615001": { contacts: ["jjramacroq"], coMentors: [] },
+        "681615004": { contacts: ["quinnkawins"], coMentors: [] },
+        "681615015": { contacts: ["happywithwowoon"], coMentors: [] },
+        "681615016": { contacts: ["grxce__e"], coMentors: [] },
+        "681615020": { contacts: ["Pungyahh"], coMentors: [] },
+        "681615023": { contacts: ["n0vtzarounq_"], coMentors: [] },
+        "681615028": { contacts: ["n_ook.n"], coMentors: [] },
+        "681615030": { contacts: ["iluvmyeve"], coMentors: [] },
+        "681615031": { contacts: ["namyentcn"], coMentors: [] },
+        "681615037": { contacts: ["_nthzcx"], coMentors: [] },
+        "681615040": { contacts: ["gusminn_"], coMentors: [] },
+        "681615046": { contacts: ["m0karls"], coMentors: [] },
+        "681615047": { contacts: ["Plsouvje"], coMentors: [] },
+        "681615048": { contacts: ["24.7fzfm"], coMentors: [] },
+        "681615050": { contacts: ["_nhamning_"], coMentors: [] },
+        "681615055": { contacts: ["0.4foe"], coMentors: [] },
+        "681615059": { contacts: ["pat.smoothie"], coMentors: [] },
+        "681615062": { contacts: ["i.iajayy"], coMentors: [] },
+        "681615072": { contacts: ["datboi.nick_111"], coMentors: [] },
+        "681615079": { contacts: ["Saitp_"], coMentors: [] },
+        "681615080": { contacts: ["naamsootting"], coMentors: [] },
+        "681615087": { contacts: ["chniheyooo"], coMentors: [] },
+        "681615106": { contacts: ["Dekshin"], coMentors: [] },
+        "681615107": { contacts: ["Marker_man"], coMentors: [] },
+        "681615123": { contacts: ["johnochaxv"], coMentors: [] },
+        "681615127": { contacts: ["nut_ijeb"], coMentors: [] },
+        "681615134": { contacts: ["Thanxkxn._"], coMentors: [] },
+        "681615137": { contacts: ["gguntaa"], coMentors: [] },
+        "681610012": { contacts: ["ken.odyix"], coMentors: [] },
+        "681610020": { contacts: ["baiminqz"], coMentors: [] },
+        "681610023": { contacts: ["kittino_"], coMentors: [] },
+        "681610027": { contacts: ["_keeratiyakorn._"], coMentors: [] },
+        "681610029": { contacts: ["bxm._.kwxnrxt"], coMentors: [] },
+        "681610030": { contacts: ["kniight113"], coMentors: [] },
+        "681610035": { contacts: ["nameirl"], coMentors: [] },
+        "681610036": { contacts: ["_k_a_n_._8411"], coMentors: [] },
+        "681610050": { contacts: ["chinnakritch"], coMentors: [] },
+        "681610054": { contacts: ["_yxth4w.ut"], coMentors: [] },
+        "681610056": { contacts: ["nhu_.n2"], coMentors: [] },
+        "681610059": { contacts: ["ntniichaa"], coMentors: [] },
+        "681610060": { contacts: ["taipeeei"], coMentors: [] },
+        "681610065": { contacts: ["burbebau"], coMentors: [] },
+        "681610073": { contacts: ["khun_natnich"], coMentors: [] },
+        "681610077": { contacts: ["pphat_cy"], coMentors: [] },
+        "681610080": { contacts: ["donraphat_.tn_"], coMentors: [] },
+        "681610091": { contacts: ["kaoaoon_sohot"], coMentors: [] },
+        "681610094": { contacts: ["trxyvy_q"], coMentors: [] },
+        "681610097": { contacts: ["17.06pattt,boantuhou"], coMentors: [] },
+        "681610103": { contacts: ["tantxwwan_"], coMentors: [] },
+        "681610105": { contacts: ["yamradaa"], coMentors: [] },
+        "681610108": { contacts: ["boatyippy"], coMentors: [] },
+        "681610109": { contacts: ["meolloey"], coMentors: [] },
+        "681610112": { contacts: ["iicee_26"], coMentors: [] },
+        "681610113": { contacts: ["nawapat_22"], coMentors: [] },
+        "681610122": { contacts: ["_wahq0lx"], coMentors: [] },
+        "681610129": { contacts: ["panxta_pp"], coMentors: [] },
+        "681610133": { contacts: ["jj_ean_pp"], coMentors: [] },
+        "681610134": { contacts: ["Jaepawa"], coMentors: [] },
+        "681610137": { contacts: ["ppepaworn"], coMentors: [] },
+        "681610139": { contacts: ["pt21_03"], coMentors: [] },
+        "681610141": { contacts: ["zft_dped"], coMentors: [] },
+        "681610143": { contacts: ["boconne11"], coMentors: [] },
+        "681610144": { contacts: ["pp_xyaawxt"], coMentors: [] },
+        "681610150": { contacts: ["pachornp"], coMentors: [] },
+        "681610163": { contacts: ["gnap_kyk"], coMentors: [] },
+        "681610166": { contacts: ["05dtsy"], coMentors: [] },
+        "681610171": { contacts: ["_b4yki"], coMentors: [] },
+        "681610173": { contacts: ["noan_mai"], coMentors: [] },
+        "681610175": { contacts: ["fb:อชิ พิริยะภัคโยธิน"], coMentors: [] },
+        "681610179": { contacts: ["phuberdee"], coMentors: [] },
+        "681610184": { contacts: ["Nxmth_z"], coMentors: [] },
+        "681610197": { contacts: ["3oem_ll"], coMentors: [] },
+        "681610200": { contacts: ["vview.ww"], coMentors: [] },
+        "681610216": { contacts: ["_.po.ng_."], coMentors: [] },
+        "681610223": { contacts: ["pimimws"], coMentors: [] },
+        "681610229": { contacts: ["sukntthiiemhrthay"], coMentors: [] },
+        "681610232": { contacts: ["sucham0ok"], coMentors: [] },
+        "681610233": { contacts: ["nxl3_o"], coMentors: [] },
+        "681610237": { contacts: ["suwineiyy"], coMentors: [] },
+        "681610240": { contacts: ["ads_lar.1"], coMentors: [] },
+        "681610242": { contacts: ["anid_anyy"], coMentors: [] },
+        "681610247": { contacts: ["p_thursdyy_m"], coMentors: [] },
+        "681610248": { contacts: ["kratta_py"], coMentors: [] },
+        "681610249": { contacts: ["meili_am"], coMentors: [] },
+        "681610250": { contacts: ["mxrch.xn"], coMentors: [] },
+        "681610251": { contacts: ["pedipmoneymaker"], coMentors: [] },
+        "681610261": { contacts: ["tvch_tae"], coMentors: [] },
+        "681610295": { contacts: ["my_thunya"], coMentors: [] },
+        "681610314": { contacts: ["ping_panatchakorn"], coMentors: [] },
+        "681610319": { contacts: ["praowpim"], coMentors: [] },
+        "681610394": { contacts: ["primx_mx"], coMentors: [] },
+        "681610409": { contacts: ["ymaichaa"], coMentors: [] },
+        "681610480": { contacts: ["Gam monsicha"], coMentors: [] },
+        "681610485": { contacts: ["wang35463 , Pinky"], coMentors: [] },
+        "681610486": { contacts: ["anzphrnz_"], coMentors: [] },
+        "681610488": { contacts: ["Vanillaconetoo. , yairthway4"], coMentors: [] },
+        "681610489": { contacts: ["ploy_pailin._"], coMentors: [] },
+        "681610490": { contacts: ["p.pimma_x"], coMentors: [] },
+        "681610491": { contacts: ["ppimviphx"], coMentors: [] },
+        "681610494": { contacts: ["qozevhsirk"], coMentors: [] },
+        "681610495": { contacts: ["Kaempns"], coMentors: [] },
+        "681610496": { contacts: ["merriessin"], coMentors: [] },
+        "681610498": { contacts: ["_mixkyzz"], coMentors: [] },
+        "681610499": { contacts: ["ratchy_w"], coMentors: [] },
+        "681610502": { contacts: ["snreeii_"], coMentors: [] },
+        "681610504": { contacts: ["rancharat.rr"], coMentors: [] },
+        "681610506": { contacts: ["wiiilaxst_ , Bimbupq"], coMentors: [] },
+        "681615002": { contacts: ["bommbambibooyaaaa_ , Tel 501 : 0807188090"], coMentors: [] },
+        "681615006": { contacts: ["Fluffyvier , bayou.brr"], coMentors: [] },
+        "681615009": { contacts: ["Kittithat_khrasungneon , chitsu_thae"], coMentors: [] },
+        "681615011": { contacts: ["jjaa_ji , eimon_2252"], coMentors: [] },
+        "681615032": { contacts: ["lauruzv , gracieey_09"], coMentors: [] },
+        "681615033": { contacts: ["hninwaiwailwin0_0"], coMentors: [] },
+        "681615036": { contacts: ["ttroque_ , jozee.ez"], coMentors: [] },
+        "681615044": { contacts: ["heyheybornor , Tel 514 : 0810815099"], coMentors: [] },
+        "681615053": { contacts: ["bibbiepryyy , filmsbydorothy_"], coMentors: [] },
+        "681615060": { contacts: ["Fik_fikkree , Line ID 517 : kzh9107"], coMentors: [] },
+        "681615064": { contacts: ["phu_thawan , Zhangli_00012"], coMentors: [] },
+        "681615065": { contacts: ["tok8b.26 , laluthor_the_sovereign"], coMentors: [] },
+        "681615075": { contacts: ["siiwxkorn , Line ID 521 : meemee984"], coMentors: [] },
+        "681615076": { contacts: ["Palaplalalengzz , Min Khant"], coMentors: [] },
+        "681615077": { contacts: ["onlysevenap , lv_christae"], coMentors: [] },
+        "681615082": { contacts: ["snreeii_ , kir_araki"], coMentors: [] },
+        "681615083": { contacts: ["px_gjz , nansaungoo_12"], coMentors: [] },
+        "681615086": { contacts: ["kcap_kcap , _luna4love"], coMentors: [] },
+        "681615096": { contacts: ["icethwk4_ , nbawn seng lung"], coMentors: [] },
+        "681615108": { contacts: ["17sxpnf.s , nnwayyz"], coMentors: [] },
+        "681615112": { contacts: ["nixxch_arr , Line ID 536 : 4915602372489"], coMentors: [] },
+        "681615122": { contacts: ["___redberryy , xi_ni_x_i"], coMentors: [] },
+        "681615132": { contacts: ["p4_nxt , Line ID 542 : thwin_33"], coMentors: [] },
+        "681615138": { contacts: ["pppremmyyy , wwangxiang954"], coMentors: [] },
+        "681610013": { contacts: ["arri3s"], coMentors: [] },
+
+        /* กลุ่มสายรหัสที่มีน้องร่วม */
+        "681610069": { contacts: ["amp_pyy"], coMentors: ["cchutp__", "sswarinn_"] },
+        "681610440": { contacts: ["amp_pyy"], coMentors: ["cchutp__", "sswarinn_"] },
+        "681610199": { contacts: ["pphing_w"], coMentors: ["aqlz0j", "tend.cember"] },
+        "681610369": { contacts: ["pphing_w"], coMentors: ["aqlz0j", "tend.cember"] },
+        "681610293": { contacts: ["poonyapat.jantan"], coMentors: ["yoou.uhoo", "paintudreams_"] },
+        "681610294": { contacts: ["poonyapat.jantan"], coMentors: ["yoou.uhoo", "paintudreams_"] },
+        "681610002": { contacts: ["kxnux_12"], coMentors: ["swjiingg", "s.mei_csn"] },
+        "681610453": { contacts: ["kxnux_12"], coMentors: ["swjiingg", "s.mei_csn"] },
+        "681610004": { contacts: ["st.jars_"], coMentors: ["Kn.wxi", "_szxth_23"] },
+        "681610459": { contacts: ["st.jars_"], coMentors: ["Kn.wxi", "_szxth_23"] },
+        "681610007": { contacts: ["staywithkmr_"], coMentors: ["e4rqnw", "inmyworldisanunpx__"] },
+        "681610469": { contacts: ["staywithkmr_"], coMentors: ["e4rqnw", "inmyworldisanunpx__"] },
+        "681610009": { contacts: ["cn.beam__"], coMentors: ["notyouraing", "linjilamud_lamyai"] },
+        "681610342": { contacts: ["cn.beam__"], coMentors: ["notyouraing", "linjilamud_lamyai"] },
+        "681610011": { contacts: ["fo_g_u_s"], coMentors: ["richkarin_dx", "jjeyaniee"] },
+        "681610475": { contacts: ["fo_g_u_s"], coMentors: ["richkarin_dx", "jjeyaniee"] },
+        "681610076": { contacts: ["kkitpht"], coMentors: ["yummama_._", "yokki791"] },
+        "681610347": { contacts: ["kkitpht"], coMentors: ["yummama_._", "yokki791"] },
+        "681610079": { contacts: ["h.catiq"], coMentors: ["pexrphi_2niuy", "pwrelldo"] },
+        "681610356": { contacts: ["h.catiq"], coMentors: ["pexrphi_2niuy", "pwrelldo"] },
+        "681610120": { contacts: ["net.jry"], coMentors: ["onyournan.w", "mananch.anok"] },
+        "681610357": { contacts: ["net.jry"], coMentors: ["onyournan.w", "mananch.anok"] },
+        "681610136": { contacts: ["cha.nnnth"], coMentors: ["n.aomxinn", "manusinamine"] },
+        "681610358": { contacts: ["cha.nnnth"], coMentors: ["n.aomxinn", "manusinamine"] },
+        "681610140": { contacts: ["praewao_o"], coMentors: ["yeelyeel_", "ramijxn"] },
+        "681610365": { contacts: ["praewao_o"], coMentors: ["yeelyeel_", "ramijxn"] },
+        "681610161": { contacts: ["patsakorndst"], coMentors: ["Songpon Lungyi"] },
+        "681610444": { contacts: ["patsakorndst"], coMentors: ["Songpon Lungyi"] },
+        "681610187": { contacts: ["pecynnn"], coMentors: ["th_high", "itzgxmez._"] },
+        "681610373": { contacts: ["pecynnn"], coMentors: ["th_high", "itzgxmez._"] },
+        "681610226": { contacts: ["nxtkamon"], coMentors: ["mini_me_en", "_12rxng"] },
+        "681610375": { contacts: ["nxtkamon"], coMentors: ["mini_me_en", "_12rxng"] },
+        "681610228": { contacts: ["zhouwjd94_"], coMentors: ["babe_small_", "rrungnaparrr"] },
+        "681610376": { contacts: ["zhouwjd94_"], coMentors: ["babe_small_", "rrungnaparrr"] },
+        "681610254": { contacts: ["n4ttha307"], coMentors: ["S.s_fxxna", "FB : wachirawit tama"] },
+        "681610382": { contacts: ["n4ttha307"], coMentors: ["S.s_fxxna", "FB : wachirawit tama"] },
+        "681610255": { contacts: ["chickenfromhome_"], coMentors: ["mxwmin.b", "wanixha_ya"] },
+        "681610383": { contacts: ["chickenfromhome_"], coMentors: ["mxwmin.b", "wanixha_ya"] },
+        "681610259": { contacts: ["mouy_dk"], coMentors: ["_norjorrjunenii", "frnk_344"] },
+        "681610406": { contacts: ["mouy_dk"], coMentors: ["_norjorrjunenii", "frnk_344"] },
+        "681610268": { contacts: ["fxlkmbro_"], coMentors: ["Ilismyjuly", "ihateluvsong"] },
+        "681610413": { contacts: ["fxlkmbro_"], coMentors: ["Ilismyjuly", "ihateluvsong"] },
+        "681610271": { contacts: ["tx._nxchxat"], coMentors: ["pmmarrch", "06.drx"] },
+        "681610414": { contacts: ["tx._nxchxat"], coMentors: ["pmmarrch", "06.drx"] },
+        "681610274": { contacts: ["wxtn.pxt_w"], coMentors: ["Poon_tarikkkk", "_cp_dss"] },
+        "681610418": { contacts: ["wxtn.pxt_w"], coMentors: ["Poon_tarikkkk", "_cp_dss"] },
+        "681610278": { contacts: ["sdylk_"], coMentors: ["paoirnoacyat", "chomcherrill"] },
+        "681610422": { contacts: ["sdylk_"], coMentors: ["paoirnoacyat", "chomcherrill"] },
+        "681610283": { contacts: ["poaadeezz"], coMentors: ["fahsiin3", "f.fieldx"] },
+        "681610419": { contacts: ["poaadeezz"], coMentors: ["fahsiin3", "f.fieldx"] },
+        "681610297": { contacts: ["wehlrq"], coMentors: ["pxxcejjt", "dnnn.srr"] },
+        "681610425": { contacts: ["wehlrq"], coMentors: ["pxxcejjt", "dnnn.srr"] },
+        "681610303": { contacts: ["trp_ton_"], coMentors: ["pitchchapatantala", "ffre5h"] },
+        "681610428": { contacts: ["trp_ton_"], coMentors: ["pitchchapatantala", "ffre5h"] },
+        "681610305": { contacts: ["tataratatarrrr"], coMentors: ["chompitcha_ya", "poomunspn"] },
+        "681610430": { contacts: ["tataratatarrrr"], coMentors: ["chompitcha_ya", "poomunspn"] },
+        "681610307": { contacts: ["jponboi"], coMentors: ["pintotheunknown", "_stwxc"] },
+        "681610435": { contacts: ["jponboi"], coMentors: ["pintotheunknown", "_stwxc"] },
+        "681610312": { contacts: ["pruek4l"], coMentors: ["phimchayaaaa", "b_s.arawut"] },
+        "681610439": { contacts: ["pruek4l"], coMentors: ["phimchayaaaa", "b_s.arawut"] },
+        "681610315": { contacts: ["n34qin"], coMentors: ["_pimnara_", "fs_srch"] },
+        "681610442": { contacts: ["n34qin"], coMentors: ["_pimnara_", "fs_srch"] },
+        "681610318": { contacts: ["meemeent_ph"], coMentors: ["Pimon.n03n", "pxllmsrn_"] },
+        "681610443": { contacts: ["meemeent_ph"], coMentors: ["Pimon.n03n", "pxllmsrn_"] },
+        "681610324": { contacts: ["pitch.bt"], coMentors: ["patodutu", "wonkul_"] },
+        "681610445": { contacts: ["pitch.bt"], coMentors: ["patodutu", "wonkul_"] },
+        "681610335": { contacts: ["mtpswd"], coMentors: ["pha1_ptr", "mingkwannnn.n"] },
+        "681610447": { contacts: ["mtpswd"], coMentors: ["pha1_ptr", "mingkwannnn.n"] },
+        "681610339": { contacts: ["ice_plok"], coMentors: ["mmaxxsptoys", "mrrr_ttnr"] },
+        "681610449": { contacts: ["ice_plok"], coMentors: ["mmaxxsptoys", "mrrr_ttnr"] },
+        "681610340": { contacts: ["nwu_deaz"], coMentors: ["te_te.tt", "pprintxr"] },
+        "681610452": { contacts: ["nwu_deaz"], coMentors: ["te_te.tt", "pprintxr"] }
+    };
+
+    function rotateNoteText() {
+        const noteElem = document.getElementById('noteHighlight');
+        if (!noteElem) return;
+
+        noteElem.classList.add('fade-out');
+        setTimeout(() => {
+            const notesList = rotatingNotes[currentLang] || rotatingNotes['th'];
+            currentNoteIndex = (currentNoteIndex + 1) % notesList.length;
+            noteElem.innerText = notesList[currentNoteIndex];
+            noteElem.classList.remove('fade-out');
+        }, 500);
+    }
+    setInterval(rotateNoteText, 4000);
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'th' ? 'en' : 'th';
+        const t = translations[currentLang];
+
+        document.getElementById('title').innerText = t.title;
+        document.getElementById('subtitleText').innerHTML = t.subtitleText;
+        document.getElementById('studentId').placeholder = t.placeholder;
+        document.getElementById('btnText').innerText = t.btnText;
+        document.getElementById('langBtn').innerText = t.langBtn;
+        document.getElementById('contactText').innerText = t.contactText;
+        document.getElementById('modalTitle').innerText = t.modalTitle;
+        document.getElementById('modalText').innerText = t.modalText;
+        document.getElementById('modalBtn').innerText = t.modalBtn;
+
+        const noteElem = document.getElementById('noteHighlight');
+        if (noteElem) {
+            currentNoteIndex = 0;
+            noteElem.innerText = rotatingNotes[currentLang][0];
+        }
+
+        const resultDiv = document.getElementById('result');
+        if (resultDiv.style.display === 'block') {
+            findHint();
+        }
+    }
+
+    function checkInputBeforeModal() {
+        const studentId = document.getElementById('studentId').value.trim();
+        const resultDiv = document.getElementById('result');
+        const t = translations[currentLang];
+
+        if (!studentId) {
+            resultDiv.className = "result-box error";
+            resultDiv.innerHTML = t.emptyError;
+            resultDiv.style.display = "block";
+            return;
+        }
+
+        document.getElementById('noteModal').classList.add('active');
+    }
+
+    function acceptNote() {
+        document.getElementById('noteModal').classList.remove('active');
+        findHint();
+    }
+
+    function findHint() {
+        const studentId = document.getElementById('studentId').value.trim();
+        const resultDiv = document.getElementById('result');
+        const t = translations[currentLang];
+
+        resultDiv.style.display = "block";
+
+        if (hintData[studentId]) {
+            resultDiv.className = "result-box success";
+            
+            const item = hintData[studentId];
+            const contacts = item.contacts || [];
+            const coMentors = item.coMentors || [];
+
+            let html = `<div style="font-size: 16px; margin-bottom: 12px; color: #2e7d32; text-align: center;">✨ ${t.foundSuccess} ✨</div>`;
+            
+            // แสดงผล Contact น้องรหัส
+            if (contacts.length === 1) {
+                html += `
+                    <span class="hint-label">${t.contactSingle}</span>
+                    <span class="hint-text">"${contacts[0]}"</span>
+                `;
+            } else if (contacts.length > 1) {
+                contacts.forEach((contact, index) => {
+                    html += `
+                        <div style="${index > 0 ? 'margin-top: 8px;' : ''}">
+                            <span class="hint-label">${t.contactMultiplePrefix}${index + 1}:</span>
+                            <span class="hint-text">"${contact}"</span>
+                        </div>
+                    `;
+                });
+            }
+
+            // แสดงผล Contact พี่ร่วม (ถ้ามี)
+            if (coMentors.length > 0) {
+                html += `<hr class="hint-divider">`;
+                html += `<span class="hint-section-title">${t.coMentorHeader}</span>`;
+                coMentors.forEach((coContact) => {
+                    html += `<span class="hint-text co-mentor-text">"${coContact}"</span>`;
+                });
+            }
+
+            resultDiv.innerHTML = html;
+        } else {
+            resultDiv.className = "result-box error";
+            resultDiv.innerHTML = t.notFoundError;
+        }
+    }
+
+    document.getElementById('studentId').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            checkInputBeforeModal();
+        }
+    });
+</script>
+
+</body>
+</html>
